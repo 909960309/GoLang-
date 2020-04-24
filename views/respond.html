@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>回复{{.toName}}</title>
+</head>
+<body>
+    <form action="/reply" method="post">
+        <input type="text" name="content" />
+        <input type="hidden" name="toName" value="{{.toName}}">
+        <input type="hidden" name="title" value="{{.title}}">
+        <input type="submit" value="回复" />
+    </form>
+</body>
+</html>

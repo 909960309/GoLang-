@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+</head>
+<body>
+    <h1>首页信息</h1>
+    <hr>
+    <div>
+        <h5>当前登录用户:<a href="/home" >{{.name}}</a> <a href="/logout" >退出登录</a></h5>
+    </div>
+    <hr>
+    <a href="/toUpload" >发布文章</a><br>
+    <h3>文章列表：</h3>
+    <div>
+        <ul>
+            {{if not .isNothing}}
+                {{range .titles}}
+                    <li><a href="/details?title={{.Title}}"><b>[标题]</b><span>{{.Title}}</span><b>[作者]</b><span>{{.Author}}</span></a></li>
+                {{end}}
+            {{end}}
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文章详情</title>
+</head>
+<body>
+    <hr>
+    <div>
+        <h5>当前登录用户:<a href="/home" >{{.name}}</a> <a href="/logout" >退出登录</a></h5>
+    </div>
+    <hr>
+    <div>
+        <h2>[标题]{{.article.Title}}</h2><br>
+        <h4>[作者]{{.article.Name}}</h4>
+    </div>
+    <div>
+        <h2>-</h2>
+        <p>    {{.article.Content}}</p>
+    </div>
+    <hr>
+    <form action="/reply" method="post">
+        <input type="text" name="content" />
+        <input type="hidden" name="toName" value="">
+        <input type="hidden" name="title" value="{{.article.Title}}">
+        <input type="submit" value="评论" />
+    </form>
+    <div>
+        {{if .isReply}}
+            {{range .article.Reply}}
+                {{.FromName}}{{if not .IsFirst}}回复{{.ToName}}{{end}}：{{.Content}}<a href="/respond?title={{$.article.Title}}&toName={{.FromName}}">回复</a><br><br>
+            {{end}}
+        {{end}}
+    </div>
+</body>
+</html>
